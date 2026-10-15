@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: product_catalog_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: YourStrongPass123
+      POSTGRES_DB: ProductDbCQRS
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - catalog_network
+
+  api:
+    image: productcatalog-api
+    container_name: product_catalog_api
+    build:
+      context: .
+      dockerfile: ProductCatalog.API/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__DefaultConnection=Host=postgres_db;Port=5432;Database=ProductDbCQRS;Username=postgres;Password=YourStrongPass123
+    depends_on:
+      - postgres_db
+    networks:
+      - catalog_network
+
+volumes:
+  postgres_data:
+
+networks:
+  catalog_network:
