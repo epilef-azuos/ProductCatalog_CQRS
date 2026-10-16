@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.CrossCutting
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.API", "ProductCatalog.API\ProductCatalog.API.csproj", "{53E08AA6-B803-4407-B021-15BB8894D042}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.Tests", "ProductCatalog.Tests\ProductCatalog.Tests.csproj", "{CE99801A-2C79-4E35-A0D4-A224E870C994}"
+	ProjectSection(ProjectDependencies) = postProject
+		{512E5F7B-0D39-4703-BFC0-80E4283278A3} = {512E5F7B-0D39-4703-BFC0-80E4283278A3}
+		{967744EC-99AB-4800-B47E-9E71D3827565} = {967744EC-99AB-4800-B47E-9E71D3827565}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,10 @@ Global
 		{53E08AA6-B803-4407-B021-15BB8894D042}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53E08AA6-B803-4407-B021-15BB8894D042}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53E08AA6-B803-4407-B021-15BB8894D042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE99801A-2C79-4E35-A0D4-A224E870C994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE99801A-2C79-4E35-A0D4-A224E870C994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE99801A-2C79-4E35-A0D4-A224E870C994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE99801A-2C79-4E35-A0D4-A224E870C994}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
