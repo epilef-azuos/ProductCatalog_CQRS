@@ -1,0 +1,40 @@
+﻿name: CI Pipeline - Product Catalog
+
+# Define quando a esteira vai rodar (Sempre que houver um push para a main)
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: Build & Test .NET 8
+    runs-on: ubuntu-latest # O GitHub vai alugar uma máquina Linux gratuita por alguns segundos
+
+    steps:
+    # 1. Faz o download do seu código para a máquina do GitHub
+    - name: 📥 Checkout do Código
+      uses: actions/checkout@v4
+
+    # 2. Instala o SDK do .NET 8 na máquina
+    - name: ⚙️ Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # 3. Restaura os pacotes NuGet
+    - name: 📦 Restore Dependencies
+      run: dotnet restore
+
+    # 4. Compila a solução inteira
+    - name: 🛠️ Build Solution
+      run: dotnet build --no-restore --configuration Release
+
+    # 5. Roda a sua suíte de testes (A Santíssima Trindade: xUnit + Moq + FluentAssertions)
+    - name: 🧪 Run Unit Tests
+      run: dotnet test --no-build --configuration Release --verbosity normal
+
+    # 6. (Bónus Nível 4) Testa se o Dockerfile continua válido
+    - name: 🐳 Test Docker Build
+      run: docker build -f ProductCatalog.API/Dockerfile -t productcatalog-api-test .
