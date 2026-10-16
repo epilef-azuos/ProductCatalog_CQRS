@@ -1,4 +1,4 @@
-﻿# Product Catalog API - Clean Architecture & CQRS 🚀
+# Product Catalog API - Clean Architecture & CQRS 🚀
 
 Uma API RESTful robusta desenvolvida em **.NET 8**, focada em demonstrar padrões avançados de arquitetura de software para sistemas corporativos e escaláveis. O projeto implementa rigorosamente a **Clean Architecture** (Arquitetura Limpa) em conjunto com o padrão **CQRS** (Command Query Responsibility Segregation).
 
@@ -101,3 +101,4 @@ A API fornece os seguintes endpoints documentados no Swagger:
 
 ---
 *Desenvolvido como projeto de portfólio para aprofundamento em arquiteturas de software distribuídas e escaláveis.*
+
